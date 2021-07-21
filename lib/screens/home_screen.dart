@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api/screens/utils/pallete.dart';
+import 'package:flutter_api/utils/pallete.dart';
+import 'package:flutter_api/widgets/user_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverAppBar(
             backgroundColor: Pallete.mainBlue,
             title: Text(
-              'Todos',
+              'Users',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 28.0,
@@ -47,17 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0, vertical: 10.0),
-                decoration: BoxDecoration(color: Pallete.cardColor),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    
-                  ],
-                ),
-              ),
+              UserCard(),
             ]),
           ),
         ],
