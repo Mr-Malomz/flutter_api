@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api/screens/modify_user.dart';
 import 'package:flutter_api/utils/pallete.dart';
 import 'package:flutter_api/widgets/user_card.dart';
 
@@ -30,7 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
             floating: true,
             actions: [
               TextButton.icon(
-                onPressed: () => print('new'),
+                onPressed: () {Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ModifyUser(),
+                      ));},
                 icon: Icon(
                   Icons.add_circle_outline,
                   color: Colors.white,

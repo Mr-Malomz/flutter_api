@@ -3,20 +3,24 @@ import 'package:flutter_api/utils/pallete.dart';
 import 'package:email_validator/email_validator.dart';
 
 class ModifyUser extends StatefulWidget {
-  const ModifyUser({Key? key}) : super(key: key);
+  final bool isEdit;
+  const ModifyUser({Key? key, this.isEdit = false}) : super(key: key);
 
   @override
   _ModifyUserState createState() => _ModifyUserState();
 }
 
 class _ModifyUserState extends State<ModifyUser> {
+  
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Pallete.mainBlue,
         title: Text(
-          'Modify User',
+          widget.isEdit ? 'Edit User' : 'Create User',
           style: TextStyle(
             color: Colors.white,
             fontSize: 28.0,
@@ -51,7 +55,7 @@ class _ModifyUserState extends State<ModifyUser> {
                   ),
                 ),
                 child: Text(
-                  'SAVE',
+                  widget.isEdit ? 'UPDATE' : 'SAVE',
                   style: TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api/screens/modify_user.dart';
 import 'package:flutter_api/utils/pallete.dart';
+import 'package:flutter_api/widgets/alert.dart';
 
 class UserCard extends StatelessWidget {
   @override
@@ -46,7 +47,7 @@ class UserCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    '1-770-736-8031 x56442',
+                    'Bret',
                     style: TextStyle(
                         fontSize: 14.0,
                         color: Pallete.mainBlue,
@@ -63,7 +64,12 @@ class UserCard extends StatelessWidget {
               _CustomButtons(
                 label: 'DELETE',
                 bgColor: Pallete.red,
-                onPressed: () {},
+                onPressed: () async {
+                  final result = await showDialog(
+                      context: context, builder: (_) => DeleteAlert());
+                  print(result);
+                  return result;
+                },
               ),
               const SizedBox(width: 20.0),
               _CustomButtons(
@@ -73,7 +79,9 @@ class UserCard extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ModifyUser(),
+                        builder: (context) => ModifyUser(
+                          isEdit: true,
+                        ),
                       ));
                 },
               ),
