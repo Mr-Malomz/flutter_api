@@ -31,11 +31,13 @@ class _HomeScreenState extends State<HomeScreen> {
             floating: true,
             actions: [
               TextButton.icon(
-                onPressed: () {Navigator.push(
+                onPressed: () {
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ModifyUser(),
-                      ));},
+                      ));
+                },
                 icon: Icon(
                   Icons.add_circle_outline,
                   color: Colors.white,
