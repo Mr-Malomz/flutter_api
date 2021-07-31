@@ -11,7 +11,6 @@ class ModifyUser extends StatefulWidget {
 }
 
 class _ModifyUserState extends State<ModifyUser> {
-  
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -42,6 +41,8 @@ class _ModifyUserState extends State<ModifyUser> {
                 hint: 'enter your email',
                 isEmail: true,
               ),
+              const SizedBox(height: 30.0),
+              _InputField(title: 'Username', hint: 'enter your username'),
               const SizedBox(height: 30.0),
               TextButton(
                 onPressed: () {
