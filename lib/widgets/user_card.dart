@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api/models/user_model.dart';
 import 'package:flutter_api/screens/modify_user.dart';
 import 'package:flutter_api/utils/pallete.dart';
 import 'package:flutter_api/widgets/alert.dart';
 
 class UserCard extends StatelessWidget {
+  final User user;
+
+  const UserCard({Key? key, required this.user}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(color: Pallete.cardColor),
       child: Column(
         children: [
@@ -30,7 +36,7 @@ class UserCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Leanne Graham',
+                    user.name,
                     style: TextStyle(
                       fontSize: 16.0,
                       color: Colors.black,
@@ -39,7 +45,7 @@ class UserCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    'Sincere@april.biz',
+                    user.email,
                     style: TextStyle(
                       fontSize: 14.0,
                       color: Colors.black,
@@ -47,7 +53,7 @@ class UserCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    'Bret',
+                    user.username,
                     style: TextStyle(
                         fontSize: 14.0,
                         color: Pallete.mainBlue,

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api/models/api_response.dart';
+import 'package:flutter_api/models/user_model.dart';
 import 'package:flutter_api/screens/modify_user.dart';
+import 'package:flutter_api/services/user_service.dart';
 import 'package:flutter_api/utils/pallete.dart';
 import 'package:flutter_api/widgets/user_card.dart';
+import 'package:get_it/get_it.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +15,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //add
+  UserService get service => GetIt.instance<UserService>();
+
+  APIResponse<List<User>>? _response;
+  bool _isLoading = false;
+  List<User> users = [];
+  int? userCount;
+
+  @override
+  void initState() {
+    _fetchUser();
+    super.initState();
+  }
+
+  _fetchUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    _response = await service.getAllUsers();
+
+    setState(() {
+      _isLoading = false;
+      userCount = _response!.data!.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
             floating: true,
             actions: [
               TextButton.icon(
-                onPressed: () {Navigator.push(
+                onPressed: () {
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ModifyUser(),
-                      ));},
+                      ));
+                },
                 icon: Icon(
                   Icons.add_circle_outline,
                   color: Colors.white,
@@ -51,10 +84,23 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ],
           ),
+          //modify this block
           SliverList(
-            delegate: SliverChildListDelegate([
-              UserCard(),
-            ]),
+            delegate:
+                SliverChildBuilderDelegate((BuildContext context, int index) {
+              if (_isLoading) {
+                return CircularProgressIndicator();
+              }
+
+              if (_response!.data != null) {
+                final User user = _response!.data![index];
+                return UserCard(user: user);
+              } else if (_response!.isError) {
+                return Center(
+                  child: Text(_response!.errorMessage.toString()),
+                );
+              }
+            }, childCount: userCount),
           ),
         ],
       ),
