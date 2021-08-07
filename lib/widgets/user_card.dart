@@ -5,6 +5,7 @@ import 'package:flutter_api/utils/pallete.dart';
 import 'package:flutter_api/widgets/alert.dart';
 
 class UserCard extends StatelessWidget {
+  //add
   final User user;
 
   const UserCard({Key? key, required this.user}) : super(key: key);
@@ -36,7 +37,7 @@ class UserCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    user.name,
+                    user.name, //modify this
                     style: TextStyle(
                       fontSize: 16.0,
                       color: Colors.black,
@@ -45,7 +46,7 @@ class UserCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    user.email,
+                    user.email, //modify this
                     style: TextStyle(
                       fontSize: 14.0,
                       color: Colors.black,
@@ -53,7 +54,7 @@ class UserCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    user.username,
+                    user.username, //modify this
                     style: TextStyle(
                         fontSize: 14.0,
                         color: Pallete.mainBlue,

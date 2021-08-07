@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   APIResponse<List<User>>? _response;
   bool _isLoading = false;
-  List<User> users = [];
   int? userCount;
 
   @override
@@ -88,19 +87,20 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverList(
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
+              final User user = _response!.data![index];
+
               if (_isLoading) {
                 return CircularProgressIndicator();
               }
 
-              if (_response!.data != null) {
-                final User user = _response!.data![index];
-                return UserCard(user: user);
-              } else if (_response!.isError) {
+              if (_response!.isError) {
                 return Center(
                   child: Text(_response!.errorMessage.toString()),
                 );
               }
-            }, childCount: userCount),
+
+              return UserCard(user: user);
+            }),
           ),
         ],
       ),
