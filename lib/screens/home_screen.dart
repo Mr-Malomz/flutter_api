@@ -44,66 +44,103 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: Pallete.mainBlue,
-            title: Text(
-              'Users',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-                letterSpacing: -1.2,
-              ),
-            ),
-            centerTitle: false,
-            floating: true,
-            actions: [
-              TextButton.icon(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ModifyUser(),
-                      ));
-                },
-                icon: Icon(
-                  Icons.add_circle_outline,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  'Add new',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              )
-            ],
-          ),
-          //modify this block
-          SliverList(
-            delegate:
-                SliverChildBuilderDelegate((BuildContext context, int index) {
+      body: Builder(builder: (context) {
+        if (_isLoading) {
+          return Center(child: CircularProgressIndicator());
+        }
+
+        if (_response!.isError) {
+          return Center(
+            child: Text(_response!.errorMessage.toString()),
+          );
+        }
+        return ListView.builder(
+            itemCount: _response!.data!.length,
+            itemBuilder: (context, index) {
               final User user = _response!.data![index];
-
-              if (_isLoading) {
-                return CircularProgressIndicator();
-              }
-
-              if (_response!.isError) {
-                return Center(
-                  child: Text(_response!.errorMessage.toString()),
-                );
-              }
-
               return UserCard(user: user);
-            }),
-          ),
-        ],
-      ),
+            });
+      }),
+      // CustomScrollView(
+      //   slivers: [
+      //     SliverAppBar(
+      //       backgroundColor: Pallete.mainBlue,
+      //       title: Text(
+      //         'Users',
+      //         style: TextStyle(
+      //           color: Colors.white,
+      //           fontSize: 28.0,
+      //           fontWeight: FontWeight.bold,
+      //           letterSpacing: -1.2,
+      //         ),
+      //       ),
+      //       centerTitle: false,
+      //       floating: true,
+      //       actions: [
+      //         TextButton.icon(
+      //           onPressed: () {
+      //             Navigator.push(
+      //                 context,
+      //                 MaterialPageRoute(
+      //                   builder: (context) => ModifyUser(),
+      //                 ));
+      //           },
+      //           icon: Icon(
+      //             Icons.add_circle_outline,
+      //             color: Colors.white,
+      //           ),
+      //           label: Text(
+      //             'Add new',
+      //             style: TextStyle(
+      //               fontSize: 16.0,
+      //               color: Colors.white,
+      //               fontWeight: FontWeight.w600,
+      //             ),
+      //           ),
+      //         )
+      //       ],
+      //     ),
+      //     //modify this block
+      //     SliverToBoxAdapter(
+      //       child: Builder(builder: (context) {
+      //         if (_isLoading) {
+      //           return CircularProgressIndicator();
+      //         }
+
+      //         if (_response!.isError) {
+      //           return Center(
+      //             child: Text(_response!.errorMessage.toString()),
+      //           );
+      //         }
+      //         return ListView.builder(
+      //             itemCount: _response!.data!.length,
+      //             itemBuilder: (context, index) {
+      //               final User user = _response!.data![index];
+      //               return UserCard(user: user);
+      //             });
+      //       }),
+      //     )
+      //     // SliverList(
+      //     //   delegate:
+      //     //       SliverChildBuilderDelegate((BuildContext context, int index) {
+      //     //     if (_response!.data != null) {
+      //     //       final User user = _response!.data![index];
+      //     //       return UserCard(user: user);
+      //     //     }
+
+      //     //     if (_isLoading) {
+      //     //       return CircularProgressIndicator();
+      //     //     }
+
+      //     //     if (_response!.isError) {
+      //     //       return Center(
+      //     //         child: Text(_response!.errorMessage.toString()),
+      //     //       );
+      //     //     }
+      //     //   }),
+      //     // ),
+      //   ],
+      // ),
     );
   }
 }
