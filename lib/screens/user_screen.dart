@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_api/utils/pallete.dart';
 import 'package:flutter_api/widgets/user_card.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class UserScreen extends StatefulWidget {
+  const UserScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _UserScreenState createState() => _UserScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
