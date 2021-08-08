@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api/models/api_response.dart';
 import 'package:flutter_api/models/user_model.dart';
+import 'package:flutter_api/utils/pallete.dart';
+//add
 import 'package:flutter_api/services/user_service.dart';
 import 'package:flutter_api/widgets/user_card.dart';
 import 'package:get_it/get_it.dart';
@@ -42,6 +44,19 @@ class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Pallete.mainBlue,
+        title: Text(
+          'Users',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+            letterSpacing: -1.2,
+          ),
+        ),
+      ),
+      //modify
       body: Builder(
         builder: (context) {
           if (_isLoading) {
@@ -54,11 +69,12 @@ class _UserScreenState extends State<UserScreen> {
             );
           }
           return ListView.builder(
-              itemCount: _response!.data!.length,
-              itemBuilder: (context, index) {
-                final User user = _response!.data![index];
-                return UserCard(user: user);
-              });
+            itemCount: _response!.data!.length,
+            itemBuilder: (context, index) {
+              final User user = _response!.data![index];
+              return UserCard(user: user);
+            },
+          );
         },
       ),
     );

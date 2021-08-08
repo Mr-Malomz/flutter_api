@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_api/screens/user_screen.dart';
 import 'package:flutter_api/screens/todo_screen.dart';
 import 'package:flutter_api/utils/pallete.dart';
-import 'package:flutter_api/services/user_service.dart';
+import 'package:flutter_api/services/todo_service.dart'; //add
+import 'package:flutter_api/services/user_service.dart'; //add
 import 'package:get_it/get_it.dart';
 
 //add
 void serviceLocator() {
   GetIt.instance.registerLazySingleton(() => UserService());
+  GetIt.instance.registerLazySingleton(() => TodoService());
 }
 
 //update
