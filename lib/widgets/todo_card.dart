@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api/models/user_model.dart';
 import 'package:flutter_api/utils/pallete.dart';
 
-class UserCard extends StatelessWidget {
-  //add
-  final User user;
-
-  const UserCard({Key? key, required this.user}) : super(key: key);
-
+class TodoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      margin: const EdgeInsets.fromLTRB(0, 0, 0, 20.0),
       decoration: BoxDecoration(color: Pallete.cardColor),
       child: Column(
         children: [
@@ -26,7 +20,7 @@ class UserCard extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(42.0)),
                 ),
                 child: Icon(
-                  Icons.person,
+                  Icons.task,
                   color: Pallete.mainBlue,
                 ),
               ),
@@ -35,7 +29,7 @@ class UserCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    user.name, //modify this
+                    'UserId: 1',
                     style: TextStyle(
                       fontSize: 16.0,
                       color: Colors.black,
@@ -44,20 +38,22 @@ class UserCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    user.email, //modify this
+                    'ID: 1',
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 16.0,
                       color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    user.username, //modify this
+                    'delectus aut autem',
                     style: TextStyle(
-                        fontSize: 14.0,
-                        color: Pallete.mainBlue,
-                        fontWeight: FontWeight.w600),
+                      fontSize: 14.0,
+                      color: Colors.black,
+                      decoration: TextDecoration.lineThrough,
+                    ),
                   ),
+                  const SizedBox(height: 5.0),
                 ],
               )
             ],
