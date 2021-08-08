@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api/utils/pallete.dart';
 
-class UserCard extends StatelessWidget {
+class TodoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +20,7 @@ class UserCard extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(42.0)),
                 ),
                 child: Icon(
-                  Icons.person,
+                  Icons.task,
                   color: Pallete.mainBlue,
                 ),
               ),
@@ -29,7 +29,7 @@ class UserCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Leanne Graham',
+                    'UserId: 1',
                     style: TextStyle(
                       fontSize: 16.0,
                       color: Colors.black,
@@ -38,20 +38,22 @@ class UserCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    'Sincere@april.biz',
+                    'ID: 1',
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 16.0,
                       color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 5.0),
                   Text(
-                    'Bret',
+                    'delectus aut autem',
                     style: TextStyle(
-                        fontSize: 14.0,
-                        color: Pallete.mainBlue,
-                        fontWeight: FontWeight.w600),
+                      fontSize: 14.0,
+                      color: Colors.black,
+                      decoration: TextDecoration.lineThrough,
+                    ),
                   ),
+                  const SizedBox(height: 5.0),
                 ],
               )
             ],
