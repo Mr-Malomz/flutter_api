@@ -20,4 +20,4 @@ flutter run
 
 Article Link
 
-[Article Link]()
+[Article Link](https://malomz.medium.com/getting-started-with-service-locator-pattern-in-flutter-b125ca619b23)
