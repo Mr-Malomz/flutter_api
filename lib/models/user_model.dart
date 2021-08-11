@@ -1,11 +1,11 @@
 class User {
-  final int? id;
+  final int id;
   final String name;
   final String email;
   final String username;
 
   const User({
-    this.id,
+    required this.id,
     required this.name,
     required this.email,
     required this.username,
@@ -13,6 +13,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
+      id: json['id'],
       name: json['name'],
       email: json['email'],
       username: json['username'],
